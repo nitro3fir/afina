@@ -1,0 +1,440 @@
+{
+    "student": {
+        "main": {
+            "answer": {
+                "keyboard": [
+                    [
+                        "white",
+                        "Профиль🗿"
+                    ],
+                    [
+                        "white",
+                        "Пробники📊"
+                    ]
+                ],
+                "text": "Выберите раздел"
+            },
+            "action": {
+                "Пробники📊": "StudentActions.to_results()",
+                "Профиль🗿": "StudentActions.to_profile(student)"
+            },
+            "profile": {
+                "answer": {
+                    "keyboard": [
+                        [
+                            "white",
+                            "Изменить регион🌍"
+                        ],
+                        "addline",
+                        [
+                            "blue",
+                            "На главную 🏠"
+                        ],
+                        [
+                            "blue",
+                            "Назад ↩"
+                        ]
+                    ],
+                    "text": "..."
+                },
+                "action": {
+                    "Изменить регион🌍": "StudentActions.Profile.to_region()"
+                },
+                "region": {
+                    "answer": {
+                        "keyboard": [
+                            [
+                                "blue",
+                                "На главную 🏠"
+                            ],
+                            [
+                                "blue",
+                                "Назад ↩"
+                            ]
+                        ],
+                        "text": "Введите название региона"
+                    },
+                    "action": {
+                        "any": "StudentActions.Profile.determinate_region(student, event.text)"
+                    },
+                    "region_num": {
+                        "answer": {
+                            "keyboard": [
+                                [
+                                    "red",
+                                    "Нет"
+                                ],
+                                [
+                                    "green",
+                                    "Да"
+                                ],
+                                "addline",
+                                [
+                                    "blue",
+                                    "На главную 🏠"
+                                ],
+                                [
+                                    "blue",
+                                    "Назад ↩"
+                                ]
+                            ],
+                            "text": "..."
+                        },
+                        "action": {
+                            "Да": "StudentActions.Profile.region_agreed(student)",
+                            "Нет": "StudentActions.Profile.region_disagreed()"
+                        }
+                    }
+                }
+            },
+            "results": {
+                "answer": {
+                    "keyboard": [
+                        [
+                            "red",
+                            "Удалить предмет"
+                        ],
+                        [
+                            "green",
+                            "Добавить предмет"
+                        ],
+                        "addline",
+                        [
+                            "blue",
+                            "На главную 🏠"
+                        ],
+                        [
+                            "blue",
+                            "Назад ↩"
+                        ]
+                    ],
+                    "text": "Выберите предмет"
+                },
+                "action": {
+                    "default": "StudentActions.Results.keyboard_of_selected_subject(student, keyboard)",
+                    "Добавить предмет": "StudentActions.Results.add_subject()",
+                    "Удалить предмет": "StudentActions.Results.remove_subject()"
+                },
+                "addsub": {
+                    "answer": {
+                        "keyboard": [
+                            [
+                                "white",
+                                "Точные науки🔩"
+                            ],
+                            [
+                                "white",
+                                "Гуманитарные науки📚"
+                            ],
+                            "addline",
+                            [
+                                "white",
+                                "Естественные науки🌍"
+                            ],
+                            [
+                                "white",
+                                "Языки✒"
+                            ],
+                            "addline",
+                            [
+                                "blue",
+                                "На главную 🏠"
+                            ],
+                            [
+                                "blue",
+                                "Назад ↩"
+                            ]
+                        ],
+                        "text": "Выберите область для добавления предмета"
+                    },
+                    "action": {
+                        "Точные науки🔩": "StudentActions.Results.AddSub.technical()",
+                        "Гуманитарные науки📚": "StudentActions.Results.AddSub.humanitarian()",
+                        "Естественные науки🌍": "StudentActions.Results.AddSub.natural()",
+                        "Языки✒": "StudentActions.Results.AddSub.languages()"
+                    },
+                    "tech": {
+                        "answer": {
+                            "keyboard": [
+                                [
+                                    "blue",
+                                    "На главную 🏠"
+                                ],
+                                [
+                                    "blue",
+                                    "Назад ↩"
+                                ]
+                            ],
+                            "text": "Выберите предмет для добавления"
+                        },
+                        "action": {
+                            "default": "StudentActions.Results.AddSub.subjects_keyboard(student, keyboard, 'tech')",
+                            "Математика профиль📐": "StudentActions.Results.AddSub.add_subject(student, 'matp')",
+                            "Математика база📏": "StudentActions.Results.AddSub.add_subject(student, 'matb')",
+                            "Физика🔩": "StudentActions.Results.AddSub.add_subject(student, 'phys')",
+                            "Информатика💻": "StudentActions.Results.AddSub.add_subject(student, 'infa')"
+                        }
+                    },
+                    "ests": {
+                        "answer": {
+                            "keyboard": [
+                                [
+                                    "blue",
+                                    "На главную 🏠"
+                                ],
+                                [
+                                    "blue",
+                                    "Назад ↩"
+                                ]
+                            ],
+                            "text": "Выберите предмет для добавления"
+                        },
+                        "action": {
+                            "default": "StudentActions.Results.AddSub.subjects_keyboard(student, keyboard, 'ests')",
+                            "Биология🧬": "StudentActions.Results.AddSub.add_subject(student, 'biol')",
+                            "Химия🧪": "StudentActions.Results.AddSub.add_subject(student, 'chem')",
+                            "География🌍": "StudentActions.Results.AddSub.add_subject(student, 'geog')"
+                        }
+                    },
+                    "humn": {
+                        "answer": {
+                            "keyboard": [
+                                [
+                                    "white",
+                                    "Обществознание💸"
+                                ],
+                                "addline",
+                                [
+                                    "white",
+                                    "Литература📚"
+                                ],
+                                [
+                                    "white",
+                                    "История📜"
+                                ],
+                                "addline",
+                                [
+                                    "blue",
+                                    "На главную 🏠"
+                                ],
+                                [
+                                    "blue",
+                                    "Назад ↩"
+                                ]
+                            ],
+                            "text": "Выберите предмет для добавления"
+                        },
+                        "action": {
+                            "default": "StudentActions.Results.AddSub.subjects_keyboard(student, keyboard, 'humn')",
+                            "Обществознание💸": "StudentActions.Results.AddSub.add_subject(student, 'obsh')",
+                            "Литература📚": "StudentActions.Results.AddSub.add_subject(student, 'litr')",
+                            "История📜": "StudentActions.Results.AddSub.add_subject(student, 'hist')"
+                        }
+                    },
+                    "lang": {
+                        "answer": {
+                            "keyboard": [
+                                [
+                                    "white",
+                                    "Русский язык✒"
+                                ],
+                                "addline",
+                                [
+                                    "blue",
+                                    "На главную 🏠"
+                                ],
+                                [
+                                    "blue",
+                                    "Назад ↩"
+                                ]
+                            ],
+                            "text": "Выберите предмет для добавления"
+                        },
+                        "action": {
+                            "default": "StudentActions.Results.AddSub.subjects_keyboard(student, keyboard, 'lang')",
+                            "Русский язык✒": "StudentActions.Results.AddSub.add_subject(student, 'rusl')"
+                        }
+                    }
+                },
+                "dropsub": {
+                    "answer": {
+                        "keyboard": [
+                            [
+                                "blue",
+                                "На главную 🏠"
+                            ],
+                            [
+                                "blue",
+                                "Назад ↩"
+                            ]
+                        ],
+                        "text": "Выберите предмет для удаления"
+                    },
+                    "action": {
+                        "default": "StudentActions.Results.DropSub.subjects_keyboard(student, keyboard)",
+                        "Русский язык✒": "StudentActions.Results.DropSub.drop_subject(student, 'rusl')",
+                        "Математика база📏": "StudentActions.Results.DropSub.drop_subject(student, 'matb')",
+                        "Математика профиль📐": "StudentActions.Results.DropSub.drop_subject(student, 'matp')",
+                        "Литература📚": "StudentActions.Results.DropSub.drop_subject(student, 'litr')",
+                        "Физика🔩": "StudentActions.Results.DropSub.drop_subject(student, 'phys')",
+                        "Химия🧪": "StudentActions.Results.DropSub.drop_subject(student, 'chem')",
+                        "История📜": "StudentActions.Results.DropSub.drop_subject(student, 'hist')",
+                        "Обществознание💸": "StudentActions.Results.DropSub.drop_subject(student, 'obsh')",
+                        "Информатика💻": "StudentActions.Results.DropSub.drop_subject(student, 'infa')",
+                        "Биология🧬": "StudentActions.Results.DropSub.drop_subject(student, 'biol')",
+                        "География🌍": "StudentActions.Results.DropSub.drop_subject(student, 'geog')"
+                    }
+                },
+                "subname": {
+                    "answer": {
+                        "keyboard": [
+                            [
+                                "red",
+                                "Удалить последний"
+                            ],
+                            [
+                                "white",
+                                "Посмотреть последний"
+                            ],
+                            "addline",
+                            [
+                                "white",
+                                "Изменить последний"
+                            ],
+                            [
+                                "white",
+                                "Показать все"
+                            ],
+                            "addline",
+                            [
+                                "green",
+                                "Добавить"
+                            ],
+                            "addline",
+                            [
+                                "blue",
+                                "На главную 🏠"
+                            ],
+                            [
+                                "blue",
+                                "Назад ↩"
+                            ]
+                        ],
+                        "text": "Выбранный предмет: "
+                    },
+                    "action": {
+                        "default": "StudentActions.Results.Subject.get_selected_subject(student, sub_name)",
+                        "Удалить последний": "StudentActions.Results.Subject.drop_last()",
+                        "Посмотреть последний": "StudentActions.Results.Subject.get_last()",
+                        "Изменить последний": "StudentActions.Results.Subject.change_last()",
+                        "Показать все": "StudentActions.Results.Subject.get_all()",
+                        "Добавить": "StudentActions.Results.Subject.add()"
+                    },
+                    "add": {
+                        "answer": {
+                            "keyboard": [
+                                [
+                                    "blue",
+                                    "На главную 🏠"
+                                ],
+                                [
+                                    "blue",
+                                    "Назад ↩"
+                                ]
+                            ],
+                            "text": "Введите пробник в следующем формате: балл за каждое задание или критерий без пробелов, пробел, время выполнения\n\nПример: 4:20:00 (0:00:00, если время выполнения неизвестно)"
+                        },
+                        "action": {
+                            "default": "StudentActions.Results.Subject.Add.get_max_score()",
+                            "any": "StudentActions.Results.Subject.Add.adding()"
+                        }
+                    },
+                    "change": {
+                        "answer": {
+                            "keyboard": [
+                                [
+                                    "blue",
+                                    "На главную 🏠"
+                                ],
+                                [
+                                    "blue",
+                                    "Назад ↩"
+                                ]
+                            ],
+                            "text": "Введите пробник в таком же формате, как и в 'Добавить'\n\nВаш прошлый пробник: "
+                        },
+                        "action": {
+                            "default": "answer = student.get_last_result(sub_name)",
+                            "result": "error = student.add_result(user_directory[2], event.text)\nif error == -1\n\t:error_message = 'Слишком мало или слишком много символов в результате'\nelif error == -2:\n\terror_message = 'В результате присутствуют посторонние символы'\nelif error == -3:\n\terror_message = 'Есть балл за задание, превышающий возможный'\nelif error == -4:\n\terror_message = 'Неверный формат времени выполнения'\nelif error == -5:\n\terror_message = 'Некорректное время выполнения: в часах, минутах или секундах более двух цифр'\nelif error == -6:\n\terror_message = 'Во времени выполнения присутствуют посторонние символы'\nelif error == -7:\n\terror_message = 'Указанное значение минут или секунд больше 60 или указанное значение часов больше 24'\nelif error == -8:\n\terror_message = 'Неверный формат пробника(возможно присутствуют лишние пробелы)'\nelse:\n\tanswer = 'Пробник успешно изменен'\n\tuser_directory = user_directory[0:-1]"
+                        }
+                    },
+                    "drop": {
+                        "answer": {
+                            "keyboard": [
+                                [
+                                    "green",
+                                    "Нет"
+                                ],
+                                [
+                                    "red",
+                                    "Да"
+                                ],
+                                "addline",
+                                [
+                                    "blue",
+                                    "На главную 🏠"
+                                ],
+                                [
+                                    "blue",
+                                    "Назад ↩"
+                                ]
+                            ],
+                            "text": "Введите пробник в таком же формате, как и в 'Добавить'\n\nВаш прошлый пробник: "
+                        },
+                        "action": {
+                            "default": "StudentActions.Results.Subject.Drop.show_last()",
+                            "Да": "StudentActions.Results.Subject.Drop.agreed()",
+                            "Нет": "StudentActions.Results.Subject.Drop.disagreed()"
+                        }
+                    },
+                    "see": {
+                        "answer": {
+                            "keyboard": [
+                                [
+                                    "blue",
+                                    "На главную 🏠"
+                                ],
+                                [
+                                    "blue",
+                                    "Назад ↩"
+                                ]
+                            ],
+                            "text": ""
+                        },
+                        "action": {
+                            "default": "StudentActions.Results.Subject.See.see()"
+                        }
+                    },
+                    "seeall": {
+                        "answer": {
+                            "keyboard": [
+                                [
+                                    "blue",
+                                    "На главную 🏠"
+                                ],
+                                [
+                                    "blue",
+                                    "Назад ↩"
+                                ]
+                            ],
+                            "text": ""
+                        },
+                        "action": {
+                            "default": "StudentActions.Results.Subject.SeeAll.see()"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
